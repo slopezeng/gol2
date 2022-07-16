@@ -3,6 +3,8 @@
 #include <unordered_set>
 #include "types.h"
 
+
+
 namespace gol {
     class Game
     {
