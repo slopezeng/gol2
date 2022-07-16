@@ -16,7 +16,4 @@ int main()
     g.Generate(10);
 
     writeOutput(g.CurrentState(true));
-
-    //cout << "min: " << numeric_limits<LifeInt>::min() << endl;
-    //cout << "max: " << numeric_limits<LifeInt>::max() << endl;
 }

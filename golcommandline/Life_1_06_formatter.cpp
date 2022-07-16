@@ -16,6 +16,7 @@ namespace gol {
         {
             // ignore lines with '#'
             if (line.find("#") != string::npos) continue;
+            if (line.find("q") != string::npos) break;
 
             vector<long long> numbers;
             long long number = 0;

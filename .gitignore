@@ -37,3 +37,4 @@
 /gollib/gollib.vcxproj.filters
 /gollib/gollib.vcxproj.user
 /golcommandline/golcommandline.vcxproj.user
+/golwrapper/x64/Debug
