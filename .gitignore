@@ -33,3 +33,7 @@
 /x64/Debug
 /.vs
 /golcommandline/x64/Debug
+/gollib/x64/Debug
+/gollib/gollib.vcxproj.filters
+/gollib/gollib.vcxproj.user
+/golcommandline/golcommandline.vcxproj.user

@@ -19,9 +19,7 @@ static vector<pair<int, int>> directions =
 namespace gol {
     Game::Game(const Cells& liveCells)
     {
-        for (auto& cell : liveCells) {
-            m_aliveSet.insert(cell);
-        }
+        m_aliveSet.insert(liveCells.begin(), liveCells.end());
     }
 
     void Game::Generate(int numGenerations)
@@ -35,9 +33,7 @@ namespace gol {
     Cells Game::CurrentState(bool sortState) const
     {
         Cells result;
-        for (auto& aliveCell : m_aliveSet) {
-            result.push_back(aliveCell);
-        }
+        result.insert(result.end(), m_aliveSet.begin(), m_aliveSet.end());
 
         if (sortState) {
             sort(result.begin(), result.end());

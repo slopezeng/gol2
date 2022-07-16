@@ -4,7 +4,6 @@
 #include "types.h"
 
 
-
 namespace gol {
     class Game
     {
