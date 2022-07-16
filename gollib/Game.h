@@ -20,7 +20,7 @@ namespace gol {
     private:
         const int MinPopulation = 2;
         const int MaxPopulation = 3;
-        // Custom hash function so we can use the hash map for pairs.
+        // Custom hash function so we can use the hash set for pairs.
         struct HashFunction
         {
             long long operator()(const Cell& coordinate) const
@@ -36,7 +36,7 @@ namespace gol {
 
         Cells getDeadNeighbors(const Cell& coordinate) const;
 
-        Cells getValidNeighbors(const Cell& coordinate) const;
+        Cells getValidNeighbors(const Cell& coordinate, bool live) const;
 
         void Generate();
     };

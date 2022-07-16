@@ -44,31 +44,15 @@ namespace gol {
 
     Cells Game::getLiveNeighbors(const Cell& coordinate) const
     {
-        Cells result;
-        auto validNeighs = getValidNeighbors(coordinate);
-        for_each(validNeighs.begin(), validNeighs.end(), [&](const auto& cell) {
-            if (m_aliveSet.find(cell) != m_aliveSet.end())
-            {
-                result.push_back(cell);
-            }
-        });
-        return result;
+        return getValidNeighbors(coordinate, true);
     }
 
     Cells Game::getDeadNeighbors(const Cell& coordinate) const
     {
-        Cells result;
-        auto validNeighs = getValidNeighbors(coordinate);
-        for_each(validNeighs.begin(), validNeighs.end(), [&](const auto& cell) {
-            if (m_aliveSet.find(cell) == m_aliveSet.end())
-            {
-                result.push_back(cell);
-            }
-        });
-        return result;
+        return getValidNeighbors(coordinate, false);
     }
 
-    Cells Game::getValidNeighbors(const Cell& coordinate) const
+    Cells Game::getValidNeighbors(const Cell& coordinate, bool live) const
     {
         Cells result;
 
@@ -83,7 +67,14 @@ namespace gol {
             // y at top boundary
             if (dir.second > 0 && coordinate.second == numeric_limits<LifeInt>::max()) continue;
 
-            result.push_back(make_pair(coordinate.first + dir.first, coordinate.second + dir.second));
+            auto neighborCell = make_pair(coordinate.first + dir.first, coordinate.second + dir.second);
+
+            // if caller is asking for live cells or dead cells
+            if (live ? m_aliveSet.find(neighborCell) != m_aliveSet.end() :
+                m_aliveSet.find(neighborCell) == m_aliveSet.end())
+            {
+                result.push_back(neighborCell);
+            }
         }
 
         return result;
