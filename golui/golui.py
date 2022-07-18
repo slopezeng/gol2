@@ -31,34 +31,40 @@ def drawGrid():
     SCREEN.fill(BLACK)
 
     # boilerplate font stuff for rendering text
-    myFont = pygame.font.SysFont('Comic Sans MS', BLOCK_SIZE // 4)
+    myFont = pygame.font.SysFont('Comic Sans MS', BLOCK_SIZE // 2)
     myFont.set_bold(True)
 
     # draw vertical lines
     x = 0 
+    count = 0
     numLinesDrawn_x = SCREEN_WIDTH // BLOCK_SIZE - 1
     farLeft = int(math.ceil(numLinesDrawn_x / 2)) * -1 + X_OFFSET
     while x < SCREEN_WIDTH:
         if x > 0:
             pygame.draw.line(SCREEN, GREY, (x,0), (x, SCREEN_HEIGHT), GRIDLINE_THICKNESS)
-        textSurface = myFont.render(shorten(farLeft), False, WHITE)
-        if x > 0:
-            SCREEN.blit(textSurface, (x, 0))
+        if count % 5 == 0:
+            textSurface = myFont.render(shorten(farLeft), False, WHITE)
+            if x > 0:
+                SCREEN.blit(textSurface, (x, 0))
         x += BLOCK_SIZE
+        count += 1
         farLeft += 1
 
     # draw horizontal lines
     y = 0 
+    count = 0
     numLinesDrawn_y = SCREEN_HEIGHT // BLOCK_SIZE - 1
     top = int(math.ceil(numLinesDrawn_y / 2)) + Y_OFFSET
     while y < SCREEN_HEIGHT:
         if y > 0:
             pygame.draw.line(SCREEN, GREY, (0,y), (SCREEN_WIDTH, y), GRIDLINE_THICKNESS)
-        textSurface = myFont.render(shorten(top), False, WHITE)
-        if y > 0:
-            SCREEN.blit(textSurface, (0, y))
+        if count % 5 == 0:
+            textSurface = myFont.render(shorten(top), False, WHITE)
+            if y > 0:
+                SCREEN.blit(textSurface, (0, y))
         y += BLOCK_SIZE
         top -= 1
+        count += 1
 
 # here we pass in an x,y coordinate assuming the origin is
 # (SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
@@ -157,6 +163,16 @@ def run():
 
     # glider
     #listOfTuples = [(0,0),(1,0),(-1,0),(1,1),(0,2)]
+
+    # 2 glider collision
+    #listOfTuples = [(0,0),(1,0),(-1,0),(-1,1),(0,2), (0,-3),(1,-3),(-1,-4),(1,-4),(1,-5)]
+
+    # spaceship
+    #listOfTuples = \
+    #    [(0,0),(-3,0),(-1,1),(-2,1),(-1,2),(0,2),(1,2),(1,3), \
+    #     (3,2),(4,0),(4,2),(5,0),(5,2),(6,1), \
+    #     (-3,-3),(-4,-4),(-5,-1),(-5,-2),(-6,-1),(-6,-3),(-7,0),(-7,-1), \
+    #     (-8,-1),(-8,-3),(-9,-2)]
 
     # center screen
     npa = np.array(listOfTuples)

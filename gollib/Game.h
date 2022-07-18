@@ -14,7 +14,7 @@ namespace gol {
         void Generate(int numGenerations);
 
         // Returns the current state of the Game - allow for sorting so
-        // that consistent output can be obtained
+        // that a consistent output can be obtained
         Cells CurrentState(bool sortState) const;
 
     private:

@@ -20,7 +20,7 @@ projects:
 	Move the camera with 'wasd'.
 
 To build the solution define a PYTHON_ROOT environment variable and point it to the 
-python used by Visual Studion, e.g. in:
+python used by Visual Studio, e.g. in:
 		C:\Program Files (x86)\Microsoft Visual Studio\2019\Preview\Common7\IDE\Extensions\Microsoft\Python\Miniconda\Miniconda3-x64
 
 The python environment within the solution must have the following modules installed:
