@@ -58,6 +58,8 @@ namespace gol {
 
         for (const auto& dir : directions)
         {
+            // ignore boundaries
+
             // x at left boundary
             if (dir.first < 0 && coordinate.first == numeric_limits<LifeInt>::min()) continue;
             // x at right boundary

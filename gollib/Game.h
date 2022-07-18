@@ -25,7 +25,7 @@ namespace gol {
         {
             long long operator()(const Cell& coordinate) const
             {
-                std::hash<long long> hasher;
+                std::hash<LifeInt> hasher;
                 return hasher(coordinate.first) + 0x9e3779b9 +
                     (coordinate.second << 6) + (coordinate.second >> 2);
             }

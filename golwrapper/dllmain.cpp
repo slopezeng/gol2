@@ -7,22 +7,6 @@
 #include <iostream>
 #include <vector>
 
-BOOL APIENTRY DllMain( HMODULE hModule,
-                       DWORD  ul_reason_for_call,
-                       LPVOID lpReserved
-                     )
-{
-    switch (ul_reason_for_call)
-    {
-    case DLL_PROCESS_ATTACH:
-    case DLL_THREAD_ATTACH:
-    case DLL_THREAD_DETACH:
-    case DLL_PROCESS_DETACH:
-        break;
-    }
-    return TRUE;
-}
-
 using namespace std;
 using namespace gol;
 
@@ -46,13 +30,11 @@ static Cells toCells(PyObject* listofTuples) {
 
                 if (coordinate.size() != 2)
                 {
-                    cout << "coord size not 2" << endl;
                     throw logic_error("Passed PyObject pointer was not a list or tuple!");
                 }
             }
             else
             {
-                cout << "inner pair not tuple" << endl;
                 throw logic_error("Passed PyObject pointer was not a list or tuple!");
             }
             Cell c = { coordinate[0], coordinate[1] };
@@ -61,7 +43,6 @@ static Cells toCells(PyObject* listofTuples) {
     }
     else
     {
-        cout << "outer list not list" << endl;
         throw logic_error("Passed PyObject pointer was not a list or tuple!");
     }
     return result;
@@ -69,7 +50,6 @@ static Cells toCells(PyObject* listofTuples) {
 
 PyObject* toListofTuples(const Cells& data) {
     PyObject* listObj = PyList_New(data.size());
-    if (!listObj) throw logic_error("Unable to allocate memory for Python list");
     for (unsigned int i = 0; i < data.size(); i++) 
     {
         PyObject* tupleObj = PyTuple_New(2);
